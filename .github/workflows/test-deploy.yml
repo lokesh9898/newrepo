@@ -15,15 +15,12 @@ jobs:
            sudo apt-get update -y && sudo apt-get install openssh* -y
            sudo apt-get install -y apache2
            sudo service apache2 start
-           sudo rpm -qa | grep apache
- 
-           
-           
+           sudo rpm -qa
   deploy:
      needs: [build]
      runs-on: ubuntu-latest
      steps:
        - uses: actions/checkout@v3
        - name: Test the multi deploy jobs
-         run: sudo rpm -qa | grep apache
+         run: sudo rpm -qa 
   
