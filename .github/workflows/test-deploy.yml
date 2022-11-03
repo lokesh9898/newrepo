@@ -12,11 +12,12 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: |
-           echo Hello, world!
+           # echo Hello, world!
            sudo apt-get update -y && sudo apt-get install openssh* -y
            sudo apt-get install -y apache2
            sudo service apache2 start
-           sudo cat /etc/os-release
+           sudo rpm -qa | grep apache
+           # sudo cat /etc/os-release
            
            
   deploy:
@@ -25,5 +26,5 @@ jobs:
      steps:
        - uses: actions/checkout@v3
        - name: Test the multi deploy jobs
-         run: sudo service apache2 status
+         run: sudo rpm -qa | grep apache
   
