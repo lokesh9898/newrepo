@@ -14,14 +14,15 @@ jobs:
         run: |
            echo Hello, world!
            sudo apt-get update -y && sudo apt-get install openssh* -y
-           sudo apt-get install -y httpd
+           sudo apt-get install -y apache2
            sudo cat /etc/os-release
            
            
   deploy:
+     needs: [build]
      runs-on: ubuntu-latest
      steps:
        - uses: actions/checkout@v3
        - name: Test the multi deploy jobs
-         run: sudo systemctl status httpd
+         run: sudo service apache2 status
   
