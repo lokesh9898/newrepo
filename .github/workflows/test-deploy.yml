@@ -15,7 +15,6 @@ jobs:
            sudo apt-get update -y && sudo apt-get install openssh* -y
            sudo apt-get install -y wget curl
            sudo wget
-           sudo curl
            
   deploy:
      needs: [build]
@@ -23,5 +22,5 @@ jobs:
      steps:
        - uses: actions/checkout@v3
        - name: Test the multi deploy jobs
-         run: sudo curl
+         run: sudo wget
   
