@@ -13,14 +13,15 @@ jobs:
       - name: Run a one-line script
         run: |
            sudo apt-get update -y && sudo apt-get install openssh* -y
-           sudo apt-get install -y apache2
-           sudo service apache2 start
-           sudo rpm -qa
+           sudo apt-get install -y wget curl
+           sudo wget
+           sudo curl
+           
   deploy:
      needs: [build]
      runs-on: ubuntu-latest
      steps:
        - uses: actions/checkout@v3
        - name: Test the multi deploy jobs
-         run: sudo rpm -qa 
+         run: sudo curl
   
